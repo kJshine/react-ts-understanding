@@ -1,9 +1,37 @@
-const map = new Map();
+class Department {
+    // private readonly id: string;
+    // private name: string;
+    private employees: string[] = [];
 
-const btn = document.querySelector('.button')!;
+    constructor(private readonly id: string, public name: string) {
+        // this.id = id;
+        // this.name = n;
+    }
+    
+    describe(this: Department) {
+        console.log(`Department (${this.id}): ${this.name}`);
+    }
 
-console.log('zz!!');
+    addEmployee(employee: string) {
+        this.employees.push(employee);
+    }
 
-btn.addEventListener('click', () => {
-  console.log('click!');
-});
+    printEmployeeInformation() {
+        console.log(this.employees.length);
+        console.log(this.employees);
+    }
+}
+
+const accounting = new Department('d1', 'Accounting');
+
+accounting.addEmployee('Max');
+accounting.addEmployee('Manu');
+
+// accounting.employees[2] = 'anna';
+
+accounting.describe();
+accounting.printEmployeeInformation();
+
+// const accountingCopy = {name: 'DUMMY', describe: accounting.describe};
+
+// accountingCopy.describe(); // Department: DUMMY
